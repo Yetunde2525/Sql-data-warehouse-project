@@ -6,7 +6,7 @@ This project demonstrates the design and development of a data warehouse using S
 Feel free to investigate, discover, and participate. Suggestions and comments are always appreciated! 🚀 Enjoy your exploration!
 
 **Project Requirements**
-Building the Data Warehouse (Data Engineering)
+Building the Data Warehouse 
 
 **Objective**
 

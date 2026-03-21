@@ -1,13 +1,16 @@
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-DDL:Script: Create Bronze Tables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Script Purpose:
-        This Script creates tables in the 'Bronze'schema ,dropping existing tables 
-        if they exist already exist.
-        Run this scrpit to re-define the DDL structure of 'Bronze'Tables.
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  */
+===============================================================================
+DDL Script: Bronze Layer Tables
+Project     : SQL Data Warehouse Project
+Layer       : Bronze (Raw Ingestion Layer)
+Description : 
+    This script creates all Bronze layer tables used for raw data ingestion
+    from CRM and ERP source systems.
+
+    - Existing tables are dropped if they exist
+    - Tables are recreated with appropriate schemas
+===============================================================================
+*/
 
 IF OBJECT_ID('Bronze.crm_cust_info', 'U') IS NOT NULL
 	DROP TABLE Bronze.crm_cust_info;
@@ -65,4 +68,4 @@ id NVARCHAR(50),
 cat NVARCHAR(50),
 subcat NVARCHAR(50),
 maintenance NVARCHAR(50)
-)
+);

@@ -3,7 +3,7 @@
 Stored Procedure: Load Silver Layer (Transformation Layer)
 Description:
     Loads cleaned and standardized data from Bronze layer into Silver layer tables.
-    
+Insert:    
     - Truncates Silver tables before load
     - Applies data cleansing and transformation rules
     - Removes duplicates and handles null values

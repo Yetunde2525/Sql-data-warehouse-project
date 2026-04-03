@@ -1,6 +1,7 @@
 /*
 ===============================================================================
 Stored Procedure: Load Silver Layer (Transformation Layer)
+===============================================================================
 Description:
     Loads cleaned and standardized data from Bronze layer into Silver layer tables.
 Insert:    

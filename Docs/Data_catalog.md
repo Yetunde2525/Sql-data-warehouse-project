@@ -2,10 +2,12 @@ Data Dictionary For Gold Layer
 
 
 Overview
-The Gold layer is the business level data representation ,sturctured to support analytical and reporting use cases .it consists of **dimension
-tables* and **fact tables** for specific business metrics.
-## 1. Gold.dim_customers
 
+The Gold layer is the business level data representation ,sturctured to support analytical and reporting use cases .it consists of dimension
+tables and fact tables for specific business metrics.
+
+
+ 1. Gold.dim_customers
 - Purpose:Stores customer details enriched with demographic and geographic data.
 - Columns:
 
@@ -24,8 +26,7 @@ tables* and **fact tables** for specific business metrics.
 
 
 
-## 2. Gold.dim_products 
-
+2. Gold.dim_products 
 - Purpose:Provides information about the products and their attributes
 - Columns:
 
@@ -44,11 +45,10 @@ tables* and **fact tables** for specific business metrics.
 | start_date           | DATE         | The date when the product became available for sale or use. |
 
 
-## 3. gold.fact_sales
-
+3. Gold.fact_sales
 - Purpose:Stores transactional sales data for analytical purposes.
 - Columns:
-
+- 
 | Column Name   | Data Type     | Description                                                                 |
 |---------------|--------------|-----------------------------------------------------------------------------|
 | order_number  | NVARCHAR(50) | A unique alphanumeric identifier for each sales order (e.g., "SO54496").   |

@@ -66,12 +66,6 @@ Documentation: Provide clear data model documentation
 📊 BI: Analytics & Reporting (Data Analytics)
 Objective
 
-Develop SQL-based analytics to generate insights into:
-
-👥 Customer Behavior
-📦 Product Performance
-📈 Sales Trends
-
 These insights support data-driven decision-making and business strategy.
 
 🏛️ Data Architecture
@@ -82,14 +76,18 @@ This project follows Medallion Architecture:
 Raw data ingestion
 Data stored as-is
 CSV files loaded into SQL Server
+
 🥈 Silver Layer
 Data cleansing
 Standardization
 Data normalization
+
 🥇 Gold Layer
 Business-ready data
 Star schema modeling
 Reporting and analytics layer
+
+
 📂 Repository Structure
 data-warehouse-project/
 │

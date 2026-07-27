@@ -14,6 +14,7 @@ Table of Contents
    - Technical Columns
    - Business Date Columns
 4. Stored Procedure Naming
+5. Known Data Quality Exceptions
 
 
 General Principles
@@ -68,3 +69,11 @@ Stored Procedure Naming
 - Procedures that load a layer follow the pattern `load_<layer>`.
   - `bronze.load_bronze` — loads raw CRM/ERP CSVs into the Bronze layer.
   - `silver.load_silver` — cleans and loads Bronze data into the Silver layer.
+
+
+Known Data Quality Exceptions
+
+These are gaps in the source data itself, not bugs in the load procedures — the pipeline surfaces them correctly rather than papering over them, so they're expected to show up on every load.
+
+- **`gold.fact_sales.order_date` is `NULL` for 19 rows.** Their source `sls_order_dt` in `bronze.crm_sales_details` isn't a valid 8-digit date, so `silver.load_silver`'s date-cleansing logic deliberately nulls it out rather than fabricate or error on a bad value.
+- **`gold.dim_products.category` / `subcategory` / `maintenance` are `NULL` for 7 rows.** Those products carry category code `CO_PE` (extracted from `prd_key`), which has no matching `id` in `erp_px_cat_g1v2` — the ERP category master is missing that code. The `LEFT JOIN` in `gold.dim_products` correctly returns `NULL` rather than dropping the products.

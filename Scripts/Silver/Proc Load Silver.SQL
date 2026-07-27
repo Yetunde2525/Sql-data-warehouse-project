@@ -138,20 +138,20 @@ SET @START_TIME = GETDATE();
              CASE WHEN sls_due_dt = 0 OR LEN (sls_due_dt) != 8 THEN NULL 
                       ELSE CAST(CAST(sls_due_dt AS VARCHAR) AS DATE) 
                  END AS sls_due_dt,
-        CASE 
-            WHEN sls_sales IS NULL 
-                 OR sls_sales <= 0 
+        CASE
+            WHEN sls_sales IS NULL
+                 OR sls_sales <= 0
                  OR sls_sales != sls_quantity * ABS(sls_price)
             THEN sls_quantity * ABS(sls_price)
             ELSE sls_sales
         END AS sls_sales, --- it is recalculated as sls_quantity multiplied by the absolute value of sls_price to ensure data accuracy and consistency in the Silver layer.
-        CASE 
-            WHEN sls_price IS NULL 
+          sls_quantity,
+        CASE
+            WHEN sls_price IS NULL
                  OR sls_price <= 0
             THEN sls_sales/ NULLIF(sls_quantity, 0)
             ELSE sls_price
-        END AS sls_price,------Derive price if original value is invalid
-          sls_quantity
+        END AS sls_price------Derive price if original value is invalid
       FROM bronze.crm_sales_details;
       SET @END_TIME = GETDATE();
        PRINT '>>Time taken to load :silver.crm_sales_details' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';

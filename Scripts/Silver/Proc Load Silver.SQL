@@ -82,7 +82,7 @@ SET @START_TIME = GETDATE();
     prd_id,
     cat_id,
 	prd_key,
-	prd_NM,
+	prd_nm,
 	prd_cost,
 	prd_line,
 	prd_start_dt,
@@ -91,8 +91,8 @@ SET @START_TIME = GETDATE();
         prd_id,
         REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id,----EXTRACT CATERGORY ID
         SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key,------EXTRACT PRODUCT KEY
-        prd_NM,
-        ISNULL(Prd_cost, 0) AS prd_cost,
+        prd_nm,
+        ISNULL(prd_cost, 0) AS prd_cost,
     CASE UPPER(TRIM(prd_line))
     WHEN 'M' THEN 'MOUNTAIN'
     WHEN 'R' THEN 'ROAD'

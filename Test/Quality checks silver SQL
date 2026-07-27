@@ -18,7 +18,7 @@ Usage Notes:
 */
 
 --=================================================
---Checking 'Silver .crm_cust_info'
+--Checking 'silver.crm_cust_info'
 --=================================================
 --check for Nulls or Duplicates in Primary Key
 --Expectation :No Results
@@ -96,7 +96,7 @@ WHERE sls_due_dt <= 0
 --Expectation:No Results
 SELECT
 *
-  FROM Silver.crm_sales_deatails
+  FROM silver.crm_sales_details
   WHERE sls_order_dt >sls_ship_dt
   OR sls_order_dt > sls_due_dt;
 
@@ -140,12 +140,13 @@ ORDER BY sls_sales, sls_quantity, sls_price;
               FROM silver.erp_loc_a101
               ORDER BY cntry;
 --=======================================================
--- Checking 'silver.erp_pa_cat_giv2'
+-- Checking 'silver.erp_px_cat_g1v2'
 --=======================================================
 -- Check for Unwanted Spaces
 -- Expectation: No Results
               SELECT
-              FROM silver.erp_px_cat_giv2
+                  cat, subcat, maintenance
+              FROM silver.erp_px_cat_g1v2
               WHERE cat != TRIM(cat)
                  OR subcat != TRIM(subcat)
                  OR maintenance != TRIM(maintenance);
@@ -153,7 +154,5 @@ ORDER BY sls_sales, sls_quantity, sls_price;
 -- Data Standardization & Consistency
                 SELECT DISTINCT
                     maintenance
-                FROM silver.erp_pa_cat_giv2;
-                WHERE sls_order_dt > sls_ship_dt
-                   OR sls_order_dt > sls_due_dt;
+                FROM silver.erp_px_cat_g1v2;
 

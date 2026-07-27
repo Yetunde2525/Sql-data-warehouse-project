@@ -15,11 +15,11 @@ Parameters:
     This stored procedure does not accept any parameters or return any values.
 
 Usage Example:
-    EXEC Silver.load_silver;
+    EXEC silver.load_silver;
 ===============================================================================
 */
 
-CREATE OR ALTER PROCEDURE Silver.load_silver 
+CREATE OR ALTER PROCEDURE silver.load_silver 
 AS
 BEGIN
 DECLARE @START_TIME DATETIME,@END_TIME DATETIME,@Batch_start_time DATETIME,@Batch_end_time DATETIME;
@@ -30,14 +30,14 @@ PRINT 'LOADING SILVER LAYER......'
 PRINT'===========================================================================';
 
 PRINT'===========================================================================';
-PRINT 'LOADING Silver.crm_cust_info......'
+PRINT 'LOADING silver.crm_cust_info......'
 PRINT'===========================================================================';
 
 SET @START_TIME = GETDATE();
-    PRINT '>>Truncating Table: Silver.crm_cust_info';
-    TRUNCATE TABLE Silver.crm_cust_info;
-    PRINT '>>Inserting data into :Silver.crm_cust_info';
-	    INSERT INTO Silver.crm_cust_info(
+    PRINT '>>Truncating Table: silver.crm_cust_info';
+    TRUNCATE TABLE silver.crm_cust_info;
+    PRINT '>>Inserting data into :silver.crm_cust_info';
+	    INSERT INTO silver.crm_cust_info(
 		    CST_ID,
 		    CST_KEY,
 		    cst_firstname,
@@ -65,20 +65,20 @@ SET @START_TIME = GETDATE();
 	    FROM(
 		    SELECT *,
 		    ROW_NUMBER() OVER(PARTITION BY cst_id ORDER BY cst_create_date DESC) AS Flag_last
-		    FROM Bronze.crm_cust_info WHERE cst_id IS NOT NULL )t
+		    FROM bronze.crm_cust_info WHERE cst_id IS NOT NULL )t
 		    WHERE Flag_last = 1;---Keeps only the latest record per cst_id based on cst_create_date, while excluding null cst_id values to maintain data integrity in the Silver layer.
             	SET @END_TIME = GETDATE();
                 PRINT '>>Time taken to load silver.crm_cust_info: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
                 
 PRINT'===========================================================================';
-PRINT 'LOADING Silver.crm_prd_info......'
+PRINT 'LOADING silver.crm_prd_info......'
 PRINT'===========================================================================';
 
 SET @START_TIME = GETDATE();
-    PRINT '>>TRUNCATING TABLE: Silver.crm_prd_info';
-    TRUNCATE TABLE Silver.crm_prd_info;
-    PRINT '>>Inserting data into :Silver.crm_prd_info';
-    INSERT INTO Silver.crm_prd_info(
+    PRINT '>>TRUNCATING TABLE: silver.crm_prd_info';
+    TRUNCATE TABLE silver.crm_prd_info;
+    PRINT '>>Inserting data into :silver.crm_prd_info';
+    INSERT INTO silver.crm_prd_info(
     prd_id,
     cat_id,
 	prd_key,
@@ -103,19 +103,19 @@ SET @START_TIME = GETDATE();
         CAST(prd_start_dt AS DATE) AS prd_start_dt,
         CAST( DATEADD(DAY, -1, 
                 LEAD(prd_start_dt) OVER ( PARTITION BY prd_key ORDER BY prd_start_dt ) ) AS DATE ) AS prd_end_dt --- CALCULATE END DATE AS ONE DAY BEFORE THE NEXT START DATE FOR THE SAME PRODUCT KEY
-    FROM Bronze.crm_prd_info;
+    FROM bronze.crm_prd_info;
     SET @END_TIME = GETDATE();
     PRINT '>>Time taken to load :silver.crm_prd_info ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
     
     PRINT'===========================================================================';
-    PRINT 'LOADING Silver.crm_sales_details......'
+    PRINT 'LOADING silver.crm_sales_details......'
     PRINT'===========================================================================';
 
     SET @START_TIME = GETDATE();
-    PRINT '>>TRUNCATING TABLE :Silver.crm_sales_details';
-    TRUNCATE TABLE Silver.crm_sales_details;
-    PRINT '>>Inserting data into :Silver.crm_sales_details';
-    INSERT INTO Silver.crm_sales_details(
+    PRINT '>>TRUNCATING TABLE :silver.crm_sales_details';
+    TRUNCATE TABLE silver.crm_sales_details;
+    PRINT '>>Inserting data into :silver.crm_sales_details';
+    INSERT INTO silver.crm_sales_details(
         sls_ord_num,
         sls_prd_key,
         sls_cust_id,
@@ -152,19 +152,19 @@ SET @START_TIME = GETDATE();
             ELSE sls_price
         END AS sls_price,------Derive price if original value is invalid
           sls_quantity
-      FROM Bronze.crm_sales_details;
+      FROM bronze.crm_sales_details;
       SET @END_TIME = GETDATE();
-       PRINT '>>Time taken to load :Silver.crm_sales_details' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+       PRINT '>>Time taken to load :silver.crm_sales_details' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 
       PRINT'===========================================================================';
-      PRINT 'LOADING Silver.erp_cust_az12......'
+      PRINT 'LOADING silver.erp_cust_az12......'
       PRINT'===========================================================================';
 
       SET @START_TIME = GETDATE();
-      PRINT '>>TRUNCATING TABLE :Silver.erp_cust_az12';
-    TRUNCATE TABLE Silver.erp_cust_az12;
-    PRINT '>>Inserting Data into :Silver.erp_cust_az12';
-    INSERT INTO Silver.erp_cust_az12 (
+      PRINT '>>TRUNCATING TABLE :silver.erp_cust_az12';
+    TRUNCATE TABLE silver.erp_cust_az12;
+    PRINT '>>Inserting Data into :silver.erp_cust_az12';
+    INSERT INTO silver.erp_cust_az12 (
 	    cid,
 	    bdate,
 	    gen)
@@ -181,17 +181,17 @@ SET @START_TIME = GETDATE();
 	    END AS gen----Normalize gender values and handle unknown cases by standard 
     from bronze.erp_cust_az12;
     SET @END_TIME = GETDATE();
-    PRINT '>>Time taken to load :Silver.erp_cust_az12' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+    PRINT '>>Time taken to load :silver.erp_cust_az12' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 
     PRINT'===========================================================================';
-    PRINT 'LOADING Silver.erp_loc_a101......'
+    PRINT 'LOADING silver.erp_loc_a101......'
     PRINT'===========================================================================';
 
     SET @START_TIME = GETDATE();
-    PRINT '>>TRUNCATING TABLE :Silver.erp_loc_a101';
-    TRUNCATE TABLE Silver.erp_loc_a101;
-    PRINT '>>Inserting data into :Silver.erp_loc_a101';
-    INSERT INTO Silver.erp_loc_a101
+    PRINT '>>TRUNCATING TABLE :silver.erp_loc_a101';
+    TRUNCATE TABLE silver.erp_loc_a101;
+    PRINT '>>Inserting data into :silver.erp_loc_a101';
+    INSERT INTO silver.erp_loc_a101
     (cid, 
     cntry)
     SELECT 
@@ -201,27 +201,27 @@ SET @START_TIME = GETDATE();
 	     WHEN TRIM(CNTRY)= '' OR cntry IS NULL THEN 'n/a'
 	     ELSE TRIM(CNTRY)
     END AS cntry ---Handle missing values and standardize country names by mapping 
-    FROM Bronze.erp_loc_a101;
+    FROM bronze.erp_loc_a101;
     SET @END_TIME = GETDATE();
-    PRINT '>>Time taken to load :Silver.erp_loc_a101' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+    PRINT '>>Time taken to load :silver.erp_loc_a101' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 
     PRINT'===========================================================================';
-    PRINT 'LOADING Silver.erp_px_cat_g1v2......'
+    PRINT 'LOADING silver.erp_px_cat_g1v2......'
     PRINT'===========================================================================';
     SET @START_TIME = GETDATE();
 
 
-    PRINT '>>TRUNCATING TABLE: Silver.erp_px_cat_g1v2';
-    TRUNCATE TABLE Silver.erp_px_cat_g1v2;
-    PRINT '>>Inserting data into :Silver.erp_px_cat_g1v2';
-    INSERT INTO Silver.erp_px_cat_g1v2 (id, cat, subcat, maintenance)
+    PRINT '>>TRUNCATING TABLE: silver.erp_px_cat_g1v2';
+    TRUNCATE TABLE silver.erp_px_cat_g1v2;
+    PRINT '>>Inserting data into :silver.erp_px_cat_g1v2';
+    INSERT INTO silver.erp_px_cat_g1v2 (id, cat, subcat, maintenance)
     SELECT id,
           cat,
           subcat,
           maintenance
-          FROM Bronze.erp_px_cat_g1v2;
+          FROM bronze.erp_px_cat_g1v2;
           SET @END_TIME = GETDATE();
-          PRINT '>>Time taken to load :Silver.erp_px_cat_g1v2' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+          PRINT '>>Time taken to load :silver.erp_px_cat_g1v2' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 
           SET @Batch_end_time = GETDATE();
 								PRINT ' ==============================================================';

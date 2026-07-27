@@ -12,11 +12,11 @@ Parameters:
 This stored procedure does not accept any parameters or return any values 
 
 Usage Examples:
-EXEC Bronze.load_Bronze;
+EXEC bronze.load_Bronze;
 ===============================================================================
 */
 
-CREATE OR ALTER PROCEDURE Bronze.load_Bronze
+CREATE OR ALTER PROCEDURE bronze.load_Bronze
 		AS
 		BEGIN
 		DECLARE @START_TIME DATETIME, @END_TIME DATETIME,@Batch_start_time DATETIME, @Batch_end_time DATETIME;
@@ -32,11 +32,11 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 		PRINT '---------------------------------------------------------------';
 		
 		SET @START_TIME = GETDATE();
-		PRINT '>>Truncating Table: Bronze.crm_cust_info';
-		 TRUNCATE TABLE Bronze.crm_cust_info;
+		PRINT '>>Truncating Table: bronze.crm_cust_info';
+		 TRUNCATE TABLE bronze.crm_cust_info;
 
-		 PRINT '>>Inserting Table :Bronze.crm_cust_info';
-		BULK INSERT Bronze.crm_cust_info
+		 PRINT '>>Inserting Table :bronze.crm_cust_info';
+		BULK INSERT bronze.crm_cust_info
 			FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
 			WITH
 			(
@@ -45,12 +45,12 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 				TABLOCK
 			);
 			SET @END_TIME = GETDATE();
-			PRINT '>>Time taken to load Bronze.crm_cust_info: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) +' seconds';
+			PRINT '>>Time taken to load bronze.crm_cust_info: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) +' seconds';
 		SET @START_TIME = GETDATE();
-			PRINT '>>Truncating Table: Bronze.crm_prd_info';
-		 TRUNCATE TABLE Bronze.crm_prd_info;
-		 PRINT '>>Inserting Table :Bronze.crm_prd_info';
-		 BULK INSERT Bronze.crm_prd_info
+			PRINT '>>Truncating Table: bronze.crm_prd_info';
+		 TRUNCATE TABLE bronze.crm_prd_info;
+		 PRINT '>>Inserting Table :bronze.crm_prd_info';
+		 BULK INSERT bronze.crm_prd_info
 			FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\prd_info.csv'
 			WITH
 			(
@@ -59,12 +59,12 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 				TABLOCK
 			);
 			SET @END_TIME = GETDATE();
-			PRINT '>>Time taken to load Bronze.crm_prd_info: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+			PRINT '>>Time taken to load bronze.crm_prd_info: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 		SET @START_TIME = GETDATE();
-			PRINT '>>Truncating Table: Bronze.crm_sales_details';
-		 TRUNCATE TABLE Bronze.crm_sales_details;
-		 PRINT '>>Inserting Table :Bronze.crm_sales_details';
-		BULK INSERT Bronze.crm_sales_details
+			PRINT '>>Truncating Table: bronze.crm_sales_details';
+		 TRUNCATE TABLE bronze.crm_sales_details;
+		 PRINT '>>Inserting Table :bronze.crm_sales_details';
+		BULK INSERT bronze.crm_sales_details
 			FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\sales_details.csv'
 			WITH
 			(
@@ -73,16 +73,16 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 				TABLOCK
 			);
 			SET @END_TIME = GETDATE();
-			PRINT '>>Time taken to load Bronze.crm_sales_details: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+			PRINT '>>Time taken to load bronze.crm_sales_details: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 		PRINT '---------------------------------------------------------------';
 		PRINT 'Loading ERP TABLES...';
 		PRINT '---------------------------------------------------------------';
 		
 		SET @START_TIME = GETDATE();
-			PRINT '>>Truncating Table:[Bronze].[erp_loc_a101]';
-		TRUNCATE TABLE Bronze.erp_loc_a101;
-		PRINT '>>Inserting Table :[Bronze].[erp_loc_a101]';
-		BULK INSERT Bronze.erp_loc_a101
+			PRINT '>>Truncating Table:[bronze].[erp_loc_a101]';
+		TRUNCATE TABLE bronze.erp_loc_a101;
+		PRINT '>>Inserting Table :[bronze].[erp_loc_a101]';
+		BULK INSERT bronze.erp_loc_a101
 			FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_erp\loc_a101.csv'
 			WITH
 			(
@@ -91,12 +91,12 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 				TABLOCK
 			);
 			SET @END_TIME = GETDATE();
-			PRINT '>>Time taken to load Bronze.erp_loc_a101: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+			PRINT '>>Time taken to load bronze.erp_loc_a101: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 		SET @START_TIME = GETDATE();
-			PRINT '>>Truncating Table: Bronze.erp_cust_az12';
-			TRUNCATE TABLE Bronze.erp_cust_az12;
-			PRINT '>>Inserting Table :Bronze.erp_cust_az12';
-			BULK INSERT Bronze.erp_cust_az12
+			PRINT '>>Truncating Table: bronze.erp_cust_az12';
+			TRUNCATE TABLE bronze.erp_cust_az12;
+			PRINT '>>Inserting Table :bronze.erp_cust_az12';
+			BULK INSERT bronze.erp_cust_az12
 				FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_erp\cust_az12.csv'
 				WITH
 				(
@@ -105,12 +105,12 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 					TABLOCK
 				);
 				SET @END_TIME = GETDATE();
-				PRINT '>>Time taken to load Bronze.erp_cust_az12: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+				PRINT '>>Time taken to load bronze.erp_cust_az12: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 		SET @START_TIME = GETDATE();
-			PRINT '>>Truncating Table: Bronze.erp_px_cat_g1v2';
-			TRUNCATE TABLE Bronze.erp_px_cat_g1v2;
-			PRINT '>>Inserting Table :Bronze.erp_px_cat_g1v2';
-			BULK INSERT Bronze.erp_px_cat_g1v2
+			PRINT '>>Truncating Table: bronze.erp_px_cat_g1v2';
+			TRUNCATE TABLE bronze.erp_px_cat_g1v2;
+			PRINT '>>Inserting Table :bronze.erp_px_cat_g1v2';
+			BULK INSERT bronze.erp_px_cat_g1v2
 				FROM 'C:\Users\yetun\OneDrive\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_erp\px_cat_g1v2.csv'
 				WITH
 				(
@@ -119,7 +119,7 @@ CREATE OR ALTER PROCEDURE Bronze.load_Bronze
 					TABLOCK
 				);
 				SET @END_TIME = GETDATE();
-				PRINT '>>Time taken to load Bronze.erp_px_cat_g1v2: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
+				PRINT '>>Time taken to load bronze.erp_px_cat_g1v2: ' + CAST(DATEDIFF(SECOND, @START_TIME, @END_TIME) AS NVARCHAR) + ' seconds';
 
 								SET @Batch_end_time = GETDATE();
 								PRINT ' ==============================================================';

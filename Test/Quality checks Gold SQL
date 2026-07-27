@@ -13,10 +13,10 @@ Usage Notes:
 - Run these checks after data loading Silver Layer.
 - Investigate and resolve any discrepancies found during the checks.
 */
-==============================================================================
---Checking 'Gold.dim_customers'
+--==============================================================================
+--Checking 'gold.dim_customers'
 --============================================================================
---check for uniqueness of customer key in Gold.dim_customers
+--check for uniqueness of customer key in gold.dim_customers
 --Expectation:No results
 SELECT
     customer_key,
@@ -25,9 +25,9 @@ FROM gold.dim_customers
 GROUP BY customer_key
 HAVING COUNT(*) > 1;
 
-================================================================
--- Checking 'Gold.product_key'
-================================================================
+--================================================================
+-- Checking 'gold.product_key'
+--================================================================
 -- Check for Uniqueness of Product Key in gold.dim_products
 -- Expectation: No results
 
@@ -38,9 +38,9 @@ FROM gold.dim_products
 GROUP BY product_key
 HAVING COUNT(*) > 1;
 
-================================================================
--- Checking 'Gold.fact_sales'
-================================================================
+--================================================================
+-- Checking 'gold.fact_sales'
+--================================================================
 -- Check the data model connectivity between fact and dimensions
 
 SELECT *

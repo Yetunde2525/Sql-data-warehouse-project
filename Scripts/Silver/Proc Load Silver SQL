@@ -98,7 +98,7 @@ SET @START_TIME = GETDATE();
     WHEN 'R' THEN 'ROAD'
     WHEN 'T' THEN 'TOURING'
     WHEN 'S' THEN 'OTHER SALES'
-    ELSE 'N/A'
+    ELSE 'n/a'
     END AS prd_line,---- MAP PRODUCT LINE TO DESCRIPTIVE VALUES
         CAST(prd_start_dt AS DATE) AS prd_start_dt,
         CAST( DATEADD(DAY, -1, 

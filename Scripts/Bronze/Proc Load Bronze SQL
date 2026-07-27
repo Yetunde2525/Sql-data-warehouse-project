@@ -12,11 +12,11 @@ Parameters:
 This stored procedure does not accept any parameters or return any values 
 
 Usage Examples:
-EXEC bronze.load_Bronze;
+EXEC bronze.load_bronze;
 ===============================================================================
 */
 
-CREATE OR ALTER PROCEDURE bronze.load_Bronze
+CREATE OR ALTER PROCEDURE bronze.load_bronze
 		AS
 		BEGIN
 		DECLARE @START_TIME DATETIME, @END_TIME DATETIME,@Batch_start_time DATETIME, @Batch_end_time DATETIME;

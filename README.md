@@ -89,28 +89,27 @@ Reporting and analytics layer
 
 
 📂 Repository Structure
-data-warehouse-project/
+Sql-data-warehouse-project/
 │
-├── datasets/               # Raw datasets (ERP & CRM data)
+├── Datasets/                # Raw datasets (ERP & CRM data)
 │
-├── docs/
-│   ├── etl.drawio
-│   ├── data_architecture.drawio
-│   ├── data_catalog.md
-│   ├── data_flow.drawio
-│   ├── data_models.drawio
-│   └── naming_conventions.md
+├── Docs/
+│   ├── Data_Architecture.png
+│   ├── Data_Integration.png
+│   ├── Data_Mart.png
+│   ├── Data_flow.png
+│   └── Data_catalog.md
 │
-├── scripts/
-│   ├── bronze/             # Raw ingestion scripts
-│   ├── silver/             # Cleaning & transformation scripts
-│   └── gold/               # Analytical model scripts
+├── Scripts/
+│   ├── Bronze/              # Raw ingestion scripts
+│   ├── Silver/              # Cleaning & transformation scripts
+│   ├── Gold/                # Analytical model scripts
+│   └── init_database.sql
 │
-├── tests/                  # Data quality & test scripts
-├── README.md               # Project documentation
-├── LICENSE                 # MIT License
-├── .gitignore              # Git ignored files
-└── requirements.txt        # Dependencies
+├── Test/                    # Data quality & test scripts
+├── README.md                # Project documentation
+├── LICENSE                  # MIT License
+└── .gitignore               # Git ignored files
 📊 Analytics Delivered
 
 This project delivers SQL-based insights including:

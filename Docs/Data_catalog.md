@@ -3,7 +3,7 @@ Data Dictionary For Gold Layer
 
 Overview
 
-The Gold layer is the business level data representation ,sturctured to support analytical and reporting use cases .it consists of dimension
+The Gold layer is the business level data representation, structured to support analytical and reporting use cases. It consists of dimension
 tables and fact tables for specific business metrics.
 
 
@@ -48,7 +48,7 @@ tables and fact tables for specific business metrics.
 3. Gold.fact_sales
 - Purpose:Stores transactional sales data for analytical purposes.
 - Columns:
-- 
+
 | Column Name   | Data Type     | Description                                                                 |
 |---------------|--------------|-----------------------------------------------------------------------------|
 | order_number  | NVARCHAR(50) | A unique alphanumeric identifier for each sales order (e.g., "SO54496").   |

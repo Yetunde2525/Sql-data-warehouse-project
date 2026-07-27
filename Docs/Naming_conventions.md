@@ -12,6 +12,7 @@ Table of Contents
 3. Column Naming Conventions
    - Surrogate Keys
    - Technical Columns
+   - Business Date Columns
 4. Stored Procedure Naming
 
 
@@ -55,6 +56,11 @@ Technical Columns
 - System-generated metadata columns are prefixed with `dwh_`.
 - Pattern: `dwh_<column_name>`
   - Example: `dwh_create_date` — the DATETIME2 column, defaulted to `GETDATE()`, recording when a row was loaded into the Silver layer.
+
+Business Date Columns
+- Business dates carried over from the source systems drop their table prefix when exposed in Gold, in line with the Gold renaming pattern (e.g. `cst_create_date` -> `create_date`, `prd_start_dt` -> `start_date`).
+- `create_date` in `gold.dim_customers` is the customer's original creation date from the CRM source system (`silver.crm_cust_info.cst_create_date`) — it reflects when the record was first created upstream, not when it was loaded here.
+- This is easy to confuse with `dwh_create_date`: `create_date` is a business date from the source, `dwh_create_date` is ETL metadata recording when this warehouse loaded the row. The two can (and normally do) have completely different values.
 
 
 Stored Procedure Naming

@@ -16,6 +16,7 @@ This project showcases how organized data pipelines and effective database desig
 This project covers the end-to-end lifecycle of building and utilizing a Data Warehouse using Medallion Architecture.
 
 Key Components
+
 🏗️ Data Architecture
 Design of Bronze, Silver, and Gold layers
 Scalable and structured data warehouse implementation

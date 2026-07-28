@@ -15,10 +15,10 @@ This project showcases how organized data pipelines and effective database desig
 
 Beyond following the Medallion Architecture build, I conducted a full code review and quality audit of the project:
 
-Found and fixed a syntax error and column-naming bug in the Bronze layer that would have broken the ETL pipeline
-Identified and resolved duplicate/conflicting table definitions in the Silver layer that were silently overriding correct logic
-Caught a data quality issue between the CRM and ERP source systems (a category code mismatch) and documented it rather than masking it, reflecting real-world data engineering judgment
-Standardized naming conventions across all layers for consistency
+- Found and fixed a syntax error and column-naming bug in the Bronze layer that would have broken the ETL pipeline
+- Identified and resolved duplicate/conflicting table definitions in the Silver layer that were silently overriding correct logic
+- Caught a data quality issue between the CRM and ERP source systems (a category code mismatch) and documented it rather than masking it, reflecting real-world data engineering judgment
+- Standardized naming conventions across all layers for consistency
 
 📌 Project Summary
 

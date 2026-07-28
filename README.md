@@ -1,13 +1,14 @@
 📊 SQL Data Warehouse & Analytics Project
+
 🙌 Welcome
 
 Welcome to the SQL Data Warehouse and Analytics Project Repository!
 This project demonstrates the design and development of a modern data warehouse using SQL Server, with a strong focus on:
 
-ETL Processes
-Data Modeling
-Data Architecture
-Analytics & Reporting
+- ETL Processes
+- Data Modeling
+- Data Architecture
+- Analytics & Reporting
 
 This project showcases how organized data pipelines and effective database design transform raw data into actionable insights.
 
@@ -27,53 +28,64 @@ This project covers the end-to-end lifecycle of building and utilizing a Data Wa
 Key Components
 
 🏗️ Data Architecture
-Design of Bronze, Silver, and Gold layers
-Scalable and structured data warehouse implementation
+- Design of Bronze, Silver, and Gold layers
+- Scalable and structured data warehouse implementation
+
 🔄 ETL Pipelines
-Data ingestion from multiple sources
-Data cleaning and transformation
-Data loading into structured layers
+- Data ingestion from multiple sources
+- Data cleaning and transformation
+- Data loading into structured layers
+
 📐 Data Modeling
-Star Schema design
-Fact and Dimension tables
-Optimized analytical queries
+- Star Schema design
+- Fact and Dimension tables
+- Optimized analytical queries
+
 📈 Analytics & Reporting
-SQL-based analytical queries
-Business insights and KPI generation
-Reporting-ready datasets
+- SQL-based analytical queries
+- Business insights and KPI generation
+- Reporting-ready datasets
+
 🧠 Skills Demonstrated
 
 This project showcases practical experience in:
 
-SQL Development
-Data Architecture
-Data Engineering
-ETL Pipeline Development
-Data Modeling
-Data Analytics
+- SQL Development
+- Data Architecture
+- Data Engineering
+- ETL Pipeline Development
+- Data Modeling
+- Data Analytics
+
 🛠️ Tools & Resources
 
 All tools used in this project are free:
 
-📁 Datasets – Project datasets (CSV files)
-🗄️ SQL Server Express – Database hosting
-💻 SQL Server Management Studio (SSMS) – Database GUI
-🔧 GitHub – Version control and collaboration
-🧭 Draw.io – Architecture & data modeling diagrams
-📝 Notion – Project tracking and documentation
+- 📁 Datasets – Project datasets (CSV files)
+- 🗄️ SQL Server Express – Database hosting
+- 💻 SQL Server Management Studio (SSMS) – Database GUI
+- 🔧 GitHub – Version control and collaboration
+- 🧭 Draw.io – Architecture & data modeling diagrams
+- 📝 Notion – Project tracking and documentation
+
 🎯 Project Requirements
+
 🏗️ Building the Data Warehouse (Data Engineering)
+
 Objective
 
 Develop a modern SQL Server data warehouse to consolidate Sales Data and enable analytical reporting.
 
 Specifications
-Data Sources: ERP & CRM (CSV files)
-Data Quality: Clean and resolve inconsistencies
-Integration: Combine sources into one analytical model
-Scope: Latest dataset only (no historization required)
-Documentation: Provide clear data model documentation
+
+- Data Sources: ERP & CRM (CSV files)
+- Data Quality: Clean and resolve inconsistencies
+- Integration: Combine sources into one analytical model
+- Scope: Latest dataset only (no historization required)
+- Documentation: Provide clear data model documentation
+
 📊 BI: Analytics & Reporting (Data Analytics)
+
 Objective
 
 These insights support data-driven decision-making and business strategy.
@@ -83,22 +95,24 @@ These insights support data-driven decision-making and business strategy.
 This project follows Medallion Architecture:
 
 🥉 Bronze Layer
-Raw data ingestion
-Data stored as-is
-CSV files loaded into SQL Server
+- Raw data ingestion
+- Data stored as-is
+- CSV files loaded into SQL Server
 
 🥈 Silver Layer
-Data cleansing
-Standardization
-Data normalization
+- Data cleansing
+- Standardization
+- Data normalization
 
 🥇 Gold Layer
-Business-ready data
-Star schema modeling
-Reporting and analytics layer
+- Business-ready data
+- Star schema modeling
+- Reporting and analytics layer
 
 
 📂 Repository Structure
+
+```
 Sql-data-warehouse-project/
 │
 ├── Datasets/                # Raw datasets (ERP & CRM data)
@@ -120,23 +134,26 @@ Sql-data-warehouse-project/
 ├── README.md                # Project documentation
 ├── LICENSE                  # MIT License
 └── .gitignore               # Git ignored files
+```
+
 📊 Analytics Delivered
 
 This project delivers SQL-based insights including:
 
-Customer Segmentation
-Product Performance Metrics
-Sales Growth Trends
-Revenue Analysis
-Business KPIs
+- Customer Segmentation
+- Product Performance Metrics
+- Sales Growth Trends
+- Revenue Analysis
+- Business KPIs
+
 📄 Documentation
 
 Detailed documentation available in:
 
-Data Architecture
-Data Models
-Data Flow
-Data Catalog
+- Data Architecture
+- Data Models
+- Data Flow
+- Data Catalog
 
 🪪 License
 
@@ -147,10 +164,10 @@ You are free to use, modify, and distribute with proper attribution.
 
 Hi, I'm Yetunde Afolayan — a Data Analyst and Business Strategy Analyst with experience in:
 
-Monitoring & Evaluation
-Business Analysis
-Strategic Decision-Making
-Data Collection & Cleaning
-Data Validation & Analysis
+- Monitoring & Evaluation
+- Business Analysis
+- Strategic Decision-Making
+- Data Collection & Cleaning
+- Data Validation & Analysis
 
 I specialize in transforming raw data into actionable insights that drive business performance and strategic planning.

@@ -122,7 +122,8 @@ Sql-data-warehouse-project/
 │   ├── Data_Integration.png
 │   ├── Data_Mart.png
 │   ├── Data_flow.png
-│   └── Data_catalog.md
+│   ├── Data_catalog.md
+│   └── Naming_conventions.md
 │
 ├── Scripts/
 │   ├── Bronze/              # Raw ingestion scripts
